@@ -1,0 +1,2 @@
+- [ ] `android/app/build.gradle.kts` dosyasında `compileSdk` ve `targetSdk` değerlerini 36 olarak güncelle
+- [ ] Değişiklikleri doğrula

@@ -1,0 +1,34 @@
+import 'package:bmi_calculater/l10n/app_localizations.dart';
+import 'package:flutter/material.dart';
+
+import 'screens/input_page.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        title: 'BMI Calculater',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark().copyWith(
+          sliderTheme: SliderTheme.of(context).copyWith(
+            activeTrackColor: Colors.white,
+            thumbColor: Color(0xFFEB1555),
+            overlayColor: Color(0x29EB1555),
+            thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15),
+            overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
+          ),
+          primaryColor: Color(0xFF0A0E21),
+          scaffoldBackgroundColor: Color(0xFF0A0E21),
+        ),
+        home: const InputPage(title: 'BMI Calculater'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales
+    );
+  }
+}
