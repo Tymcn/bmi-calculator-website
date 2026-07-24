@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
-import '../components/buttom_button.dart';
+import 'package:flutter/services.dart';
+import '../components/bottom_button.dart';
 import '../components/reusable_card.dart';
 import '../constants.dart';
+import '../logic/history_service.dart';
+import '../l10n/app_localizations.dart';
 
-class ResultsPage extends StatelessWidget {
+class ResultsPage extends StatefulWidget {
   const ResultsPage({
+    super.key,
     required this.bmiResult,
     required this.interpretation,
     required this.resultText,
@@ -13,19 +17,39 @@ class ResultsPage extends StatelessWidget {
   final String bmiResult;
   final String resultText;
   final String interpretation;
+
+  @override
+  State<ResultsPage> createState() => _ResultsPageState();
+}
+
+class _ResultsPageState extends State<ResultsPage> {
+  final HistoryService _historyService = HistoryService();
+
+  @override
+  void initState() {
+    super.initState();
+    // Save the result to history when page is shown
+    _historyService.saveResult(widget.bmiResult, widget.resultText);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: Text("BMI CALCULATOR")),
+      appBar: AppBar(
+        title: Text(l10n.appTitle),
+        centerTitle: true,
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Expanded(
             child: Container(
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15.0),
               alignment: Alignment.bottomLeft,
-              child: Text("Your Result", style: kTitleTextStyle),
+              child: Text(l10n.yourResult, style: kTitleTextStyle),
             ),
           ),
           Expanded(
@@ -36,16 +60,30 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(resultText.toUpperCase(), style: kResultTextStyle),
-                  Text(bmiResult, style: kBMITextStyle),
-                  Text(interpretation, style: kBodyTextStyle),
+                  Text(
+                    widget.resultText.toUpperCase(),
+                    style: kResultTextStyle,
+                  ),
+                  Text(
+                    widget.bmiResult,
+                    style: kBMITextStyle,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Text(
+                      widget.interpretation,
+                      textAlign: TextAlign.center,
+                      style: kBodyTextStyle,
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          ButtomButton(
-            buttonTitle: "RE-CALCULATE",
+          BottomButton(
+            buttonTitle: l10n.reCalculate,
             onTap: () {
+              HapticFeedback.lightImpact();
               Navigator.pop(context);
             },
           ),

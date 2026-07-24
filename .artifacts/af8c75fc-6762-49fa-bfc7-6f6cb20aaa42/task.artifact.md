@@ -1,2 +1,9 @@
-- [ ] `android/app/build.gradle.kts` dosyasında `compileSdk` ve `targetSdk` değerlerini 36 olarak güncelle
-- [ ] Değişiklikleri doğrula
+- [ ] `pubspec.yaml` bağımlılıklarını güncelle (`google_mobile_ads`)
+- [ ] Android yapılandırması
+    - [ ] `minSdk` değerini 23 yap
+    - [ ] `AndroidManifest.xml`'e AdMob ID ekle
+- [ ] iOS yapılandırması (`Info.plist`)
+- [ ] Reklam yardımcı sınıfını oluştur (`lib/logic/ad_helper.dart`)
+- [ ] `main.dart` içinde SDK'yı başlat
+- [ ] `InputPage` içine Banner reklamı entegre et
+- [ ] Doğrulama ve Test

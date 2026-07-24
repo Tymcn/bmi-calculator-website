@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
 
 class IconContent extends StatelessWidget {
-  IconContent({this.icons, this.label});
+  const IconContent({super.key, this.icons, this.label});
 
-  final IconData? icons;
+  final dynamic icons;
   final String? label;
 
   @override
@@ -14,9 +13,15 @@ class IconContent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(icons, size: 80),
-        SizedBox(height: 15),
-        Text(label!, style: kLabelTextStyle),
+        FaIcon(
+          icons,
+          size: 80.0,
+        ),
+        const SizedBox(height: 15.0),
+        Text(
+          label ?? '',
+          style: kLabelTextStyle,
+        ),
       ],
     );
   }

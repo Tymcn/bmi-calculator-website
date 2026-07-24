@@ -6,6 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
 import 'app_localizations_en.dart';
+import 'app_localizations_tr.dart';
 
 // ignore_for_file: type=lint
 
@@ -92,13 +93,142 @@ abstract class AppLocalizations {
       ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en'),
+    Locale('tr'),
+  ];
 
-  /// No description provided for @hello_world.
+  /// No description provided for @appTitle.
   ///
   /// In en, this message translates to:
-  /// **'Hi! You set up intl!'**
-  String get hello_world;
+  /// **'BMI Calculator'**
+  String get appTitle;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'MALE'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'FEMALE'**
+  String get female;
+
+  /// No description provided for @height.
+  ///
+  /// In en, this message translates to:
+  /// **'HEIGHT'**
+  String get height;
+
+  /// No description provided for @weight.
+  ///
+  /// In en, this message translates to:
+  /// **'WEIGHT'**
+  String get weight;
+
+  /// No description provided for @age.
+  ///
+  /// In en, this message translates to:
+  /// **'AGE'**
+  String get age;
+
+  /// No description provided for @calculate.
+  ///
+  /// In en, this message translates to:
+  /// **'CALCULATE'**
+  String get calculate;
+
+  /// No description provided for @reCalculate.
+  ///
+  /// In en, this message translates to:
+  /// **'RE-CALCULATE'**
+  String get reCalculate;
+
+  /// No description provided for @yourResult.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Result'**
+  String get yourResult;
+
+  /// No description provided for @metric.
+  ///
+  /// In en, this message translates to:
+  /// **'Metric'**
+  String get metric;
+
+  /// No description provided for @imperial.
+  ///
+  /// In en, this message translates to:
+  /// **'Imperial'**
+  String get imperial;
+
+  /// No description provided for @cm.
+  ///
+  /// In en, this message translates to:
+  /// **'cm'**
+  String get cm;
+
+  /// No description provided for @inch.
+  ///
+  /// In en, this message translates to:
+  /// **'in'**
+  String get inch;
+
+  /// No description provided for @kg.
+  ///
+  /// In en, this message translates to:
+  /// **'kg'**
+  String get kg;
+
+  /// No description provided for @lb.
+  ///
+  /// In en, this message translates to:
+  /// **'lb'**
+  String get lb;
+
+  /// No description provided for @overweight.
+  ///
+  /// In en, this message translates to:
+  /// **'Overweight'**
+  String get overweight;
+
+  /// No description provided for @normal.
+  ///
+  /// In en, this message translates to:
+  /// **'Normal'**
+  String get normal;
+
+  /// No description provided for @underweight.
+  ///
+  /// In en, this message translates to:
+  /// **'Underweight'**
+  String get underweight;
+
+  /// No description provided for @overweightInterpretation.
+  ///
+  /// In en, this message translates to:
+  /// **'You have a higher than normal body weight. Try to exercise more.'**
+  String get overweightInterpretation;
+
+  /// No description provided for @normalInterpretation.
+  ///
+  /// In en, this message translates to:
+  /// **'You have a normal body weight. Good job!'**
+  String get normalInterpretation;
+
+  /// No description provided for @underweightInterpretation.
+  ///
+  /// In en, this message translates to:
+  /// **'You have a lower than normal body weight. You can eat a bit more.'**
+  String get underweightInterpretation;
+
+  /// No description provided for @history.
+  ///
+  /// In en, this message translates to:
+  /// **'History'**
+  String get history;
 }
 
 class _AppLocalizationsDelegate
@@ -112,7 +242,7 @@ class _AppLocalizationsDelegate
 
   @override
   bool isSupported(Locale locale) =>
-      <String>['en'].contains(locale.languageCode);
+      <String>['en', 'tr'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -123,6 +253,8 @@ AppLocalizations lookupAppLocalizations(Locale locale) {
   switch (locale.languageCode) {
     case 'en':
       return AppLocalizationsEn();
+    case 'tr':
+      return AppLocalizationsTr();
   }
 
   throw FlutterError(

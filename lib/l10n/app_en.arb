@@ -1,3 +1,24 @@
 {
-                                "hello_world": "Hi! You set up intl!"
-                            }
+  "appTitle": "BMI Calculator",
+  "male": "MALE",
+  "female": "FEMALE",
+  "height": "HEIGHT",
+  "weight": "WEIGHT",
+  "age": "AGE",
+  "calculate": "CALCULATE",
+  "reCalculate": "RE-CALCULATE",
+  "yourResult": "Your Result",
+  "metric": "Metric",
+  "imperial": "Imperial",
+  "cm": "cm",
+  "inch": "in",
+  "kg": "kg",
+  "lb": "lb",
+  "overweight": "Overweight",
+  "normal": "Normal",
+  "underweight": "Underweight",
+  "overweightInterpretation": "You have a higher than normal body weight. Try to exercise more.",
+  "normalInterpretation": "You have a normal body weight. Good job!",
+  "underweightInterpretation": "You have a lower than normal body weight. You can eat a bit more.",
+  "history": "History"
+}

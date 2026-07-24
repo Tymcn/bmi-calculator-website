@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../constants.dart';
 
-class ButtomButton extends StatelessWidget {
-  ButtomButton({required this.onTap, required this.buttonTitle});
+class BottomButton extends StatelessWidget {
+  const BottomButton({super.key, required this.onTap, required this.buttonTitle});
 
   final VoidCallback? onTap;
   final String? buttonTitle;
@@ -13,12 +12,17 @@ class ButtomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        child: Center(child: Text(buttonTitle!, style: kLargeButtonTextStyle)),
         color: kBottomContainerColour,
-        padding: EdgeInsets.only(bottom: 20),
-        margin: EdgeInsets.only(top: 10),
+        padding: const EdgeInsets.only(bottom: 20),
+        margin: const EdgeInsets.only(top: 10),
         width: double.infinity,
         height: kBottomContainerHeight,
+        child: Center(
+          child: Text(
+            buttonTitle!,
+            style: kLargeButtonTextStyle,
+          ),
+        ),
       ),
     );
   }

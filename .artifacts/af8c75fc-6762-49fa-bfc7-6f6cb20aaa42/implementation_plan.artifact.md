@@ -1,23 +1,32 @@
-# Android 16 (API 36) Hedefleme Planı
+# AdMob app-ads.txt Doğrulama Çözüm Planı (Kök Dizin Hatası)
 
-Bu plan, uygulamanın Google Play Store şartlarını karşılaması için hedef API düzeyini Android 16 (API 36) sürümüne yükseltmeyi amaçlar.
+AdMob tarayıcıları, `app-ads.txt` dosyasını sadece web sitenizin **ana dizininde** (kök dizin) arar. Mevcut kurulumda dosya bir alt klasörde (`/bmi-calculator-website/`) olduğu için AdMob dosyayı bulamıyor.
 
-## Kullanıcı İncelemesi Gerekiyor
+## Sorunun Nedeni
 
-> [!IMPORTANT]
-> Hedef API düzeyini 36'ya yükseltmek, uygulamanın Android 16 özelliklerini ve davranış değişikliklerini benimsemesini gerektirir. Flutter uygulamaları genellikle bu geçişten minimum düzeyde etkilenir, ancak test edilmesi önerilir.
+- **AdMob Tarayıcı Davranışı:** AdMob, Google Play'deki web sitenizi alır (Örn: `tymcn.github.io/...`) ve dosyayı her zaman `domain.com/app-ads.txt` şeklinde arar.
+- **Şu anki Durum:** Dosyanız `tymcn.github.io/bmi-calculator-website/app-ads.txt` adresinde. AdMob buraya bakmıyor.
 
-## Önerilen Değişiklikler
+## Çözüm Adımları
 
-### Android Modülü
+Bu sorunu çözmek için GitHub'da bir "User Site" (Kullanıcı Sitesi) oluşturmamız gerekiyor.
 
-#### [MODIFY] [app/build.gradle.kts](file:///E:/Flutter%20Projeler/bmi_calculater/android/app/build.gradle.kts)
-- `compileSdk` değerini `36` olarak güncelleyin.
-- `targetSdk` değerini `36` olarak güncelleyin.
+### 1. GitHub'da Yeni Repository Oluşturun
+- Repository adı tam olarak şu olmalıdır: **`Tymcn.github.io`** (Kullanıcı adınız + .github.io)
+- Bu repository'i **Public** (Açık) yapın.
+
+### 2. app-ads.txt Dosyasını Buraya Yükleyin
+- Az önce oluşturduğum `app-ads.txt` dosyasını bu yeni repository'nin ana dizinine yükleyin.
+- Dosya şu adreste erişilebilir olmalıdır: `https://tymcn.github.io/app-ads.txt`
+
+### 3. Google Play Console Güncellemesi
+- **Mağaza Ayarları** kısmındaki Web Sitesi adresini şu şekilde değiştirin: **`https://tymcn.github.io/`**
+- Değişiklikleri kaydedin ve yayına alın (İnceleme gerektirebilir).
+
+### 4. AdMob Kontrolü
+- Play Console'daki güncelleme onaylandıktan sonra AdMob panelinden tekrar "Güncellemeleri kontrol edin" butonuna basın.
 
 ## Doğrulama Planı
 
-### Manuel Doğrulama
-- Projenin başarıyla derlendiğinden emin olun (`flutter build apk`).
-- Uygulamanın bir Android 16 emülatöründe veya cihazında (varsa) doğru çalıştığını kontrol edin.
-- `build.gradle.kts` içindeki değerlerin doğru şekilde yansıdığını kontrol edin.
+- Tarayıcıda `https://tymcn.github.io/app-ads.txt` adresine girdiğinizde dosya içeriğini gördüğünüzü onaylayın.
+- AdMob'un tarama yapması için 24-48 saat bekleyin (Genellikle daha hızlıdır).
