@@ -1,0 +1,2 @@
+- [ ] `gradle.properties` dosyasına Java Home yolunu ekle
+- [ ] Uygulamayı derle (`flutter build appbundle`) ve sonucu doğrula
